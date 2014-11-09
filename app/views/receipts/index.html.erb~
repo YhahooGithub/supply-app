@@ -1,0 +1,22 @@
+<h1 align=center>รายการรับพัสดุ</h1>
+ 
+<table width=100%>
+  <tr>
+    <th>ทอ.74</th>
+    <th>วันเดือนปี</th>
+    <th>เรื่อง</th>
+    <th>ใบจ่ายพัสดุ</th>
+
+   
+ </tr>
+ 
+  <% @receipts.each do |receipt| %>
+  <tr>
+    <td><%= link_to receipt.receipt_doc, receipt %></td>
+    <td><%= receipt.receipt_date%></td>
+    <td><%= receipt.receipt_title%></td>
+    <td> </td>
+  </tr>
+  <% end %> 
+</table>
+<br>

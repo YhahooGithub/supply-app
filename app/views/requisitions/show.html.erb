@@ -1,0 +1,74 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>ใบเบิก:</strong>
+  <% @requisition.debts.each do |t| %>
+  <%= link_to(t.doc, t) + " " %>
+  <% end %>
+</p>
+
+<h2>รายละเอียดการแจ้งความต้องการ</h1>
+
+<p>
+  <strong>เอกสารแจ้งความต้องการ:</strong>
+  <%= @requisition.reference_number %>
+</p>
+
+<p>
+  <strong>วันเดือนปีที่ออกเอกสาร:</strong>
+  <%= @requisition.issue_date %>
+</p>
+
+<p>
+  <strong>เรื่อง:</strong>
+  <%= @requisition.name %>
+</p>
+
+<p>
+  <strong>ความต้องการ(วัน):</strong>
+  <%= @requisition.delivery_request %>
+</p>
+<%= link_to 'กลับหน้าหลักรายการแจ้งความต้องการ', requisitions_path %> |
+<%= link_to 'แก้ไขรายละเอียดการแจ้งความต้องการ', edit_requisition_path(@requisition) %> |
+<%= link_to 'ลบรายการแจ้งความต้องการ', @requisition, method: :delete, data: { confirm: 'Are you sure?' } %> 
+
+
+<h2>พัสดุในรายการ</h2>
+
+<table width=50%>
+  <thead>
+    <tr>
+      <th align=left>พัสดุ</th>
+      <th>จำนวน</th>
+      <th>ราคา</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @requisition.line_items.each do |item| %>
+      <tr>
+        <td><%= item.product.name %></td>
+        <td align=center><%= item.quantity %></td>
+        <td><%= number_to_currency item.cost, unit: "THB" %></td>
+        <td><%= link_to "แก้ไข", edit_requisition_line_item_path(@requisition, item) %></td>
+        <td>
+          <%= link_to "ลบ", requisition_line_item_path(@requisition, item),
+                 data: { confirm: "Are you sure?" }, method: :delete %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<p><%= link_to "เพิ่มพัสดุในรายการ", new_requisition_line_item_path(@requisition) %></p>
+
+<h2>รายงานแจ้งความต้องการอื่นที่เกี่ยวข้อง</h2>
+<ul>
+  <% @requisition.products.each do |product| %>
+    <li><%= link_to product.name, product %></li>
+  <% end %>
+</ul>
+
+<%= display_purchase @requisition %>
+
+</br>
+</br>
+

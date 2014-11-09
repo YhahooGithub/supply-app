@@ -1,0 +1,33 @@
+<h1 align=center>รายการหมายเลขอากาศยาน</h1>
+
+<table width=100%>
+  <thead>
+    <tr>
+      <th align=right>ลำดับ</th>
+      <th align=right>หมายเลข ทอ.</th>
+      <th>หมายเลขอากาศยาน</th>
+      <th>หมายเลขฝูง</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @aircraftnumbers.each_with_index do |aircraftnumber, index| %>
+      <tr>
+        <td align=right><%= index+1 %></td>
+        <td align=right><%= aircraftnumber.rtafnumber %></td>
+        <td align=center><%= aircraftnumber.acnumber %></td>
+        <td align=center><%= aircraftnumber.sqnumber %></td>
+        <td><%= link_to 'Show', aircraftnumber %></td>
+        <td><%= link_to 'Edit', edit_aircraftnumber_path(aircraftnumber) %></td>
+        <td><%= link_to 'Destroy', aircraftnumber, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Aircraftnumber', new_aircraftnumber_path %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rtafnumber: MyString
+  acnumber: MyString
+  sqnumber: MyString
+
+two:
+  rtafnumber: MyString
+  acnumber: MyString
+  sqnumber: MyString

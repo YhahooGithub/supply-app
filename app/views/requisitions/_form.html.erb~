@@ -1,0 +1,42 @@
+<%= form_for(@requisition) do |f| %>
+  <% if @requisition.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@requisition.errors.count, "error") %> prohibited this requisition from being saved:</h2>
+
+      <ul>
+      <% @requisition.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <%= f.label :debt_ids, "เอกสารใบเบิก" %><br>
+    <%= f.collection_select :debt_ids, Debt.all, :id, :doc, prompt: true %>
+  </div>
+  
+  <div class="field">
+  <%= collection_check_boxes(:requisition, :debt_ids, @debts, :id, :doc) %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :name, "เรื่อง" %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :reference_number, "หมายเลขอ้างอิง" %><br>
+    <%= f.text_field :reference_number %>
+  </div>
+  <div class="field">
+    <%= f.label :issue_date, "วันเดือนปีที่ออกเอกสาร" %><br>
+    <%= f.date_select:issue_date %>
+  </div>
+  <div class="field">
+    <%= f.label :delivery_request, "ความต้องการ(วัน)" %><br>
+    <%= f.number_field :delivery_request %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

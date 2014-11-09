@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Squadron:</strong>
+  <%= @aircraftnumber.display_squadron %>
+</p>
+
+<p>
+  <strong>Aircraft Type:</strong>
+  <%= @aircraftnumber.display_aircraft %>
+</p>
+
+<p>
+  <strong>RTAF Number:</strong>
+  <%= @aircraftnumber.rtafnumber %>
+</p>
+
+<p>
+  <strong>Aircraft Number:</strong>
+  <%= @aircraftnumber.acnumber %>
+</p>
+
+<p>
+  <strong>Squadron Number:</strong>
+  <%= @aircraftnumber.sqnumber %>
+</p>
+
+<%= link_to 'Edit', edit_aircraftnumber_path(@aircraftnumber) %> |
+<%= link_to 'Back', aircraftnumbers_path %>

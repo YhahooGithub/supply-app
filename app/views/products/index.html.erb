@@ -1,0 +1,39 @@
+<p id="notice"><%= flash[:notice] %></p>
+
+<%= form_tag(search_products_path, {:method => :get} ) do %>
+  <%= label_tag("name", "ค้นหาด้วยชื่อพัสดุ:") %>
+  <%= text_field_tag("name") %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+<h1 align=center>รายการพัสดุ</h1>
+
+<table width=100%>
+  <thead>
+    <tr>
+      <th align=left>Part Number</th>
+      <th align=left>Model</th>
+      <th align=left>Type</th>
+      <th align=left>Name</th>
+      <th>National Stock Number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.pn %></td>
+        <td align=left><%= product.modell %></td>
+        <td align=left><%= product.pro_type %></td>
+        <td align=left><%= product.name %></td>
+        <td align=center><%= product.nsn %></td>
+	<td><%= link_to 'แสดง', product_path(product.id) %></td>
+	<td><%= link_to 'แก้ไข', edit_product_path(product) %></td>
+        <td><%= link_to 'ลบ', product_path(product.id), :confirm => 'Are you sure?', :method => :delete %> </td>
+      </tr>
+    <% end %> 
+  </tbody>
+  
+</table>
+
+<p><%= link_to "สร้างรายการพัสดุใหม่", new_product_path %></p>
+

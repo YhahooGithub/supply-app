@@ -1,0 +1,50 @@
+<p id="notice"><%= flash[:notice] %></p>
+
+<h1>รายละเอียดพัสดุ</h1>
+
+<p>
+  <strong>Part Number:</strong>
+  <%= @product.pn %>
+</p>
+
+<p>
+  <strong>Model:</strong>
+  <%= @product.modell%>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @product.pro_type%>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @product.name %>
+</p>
+
+<p>
+  <strong>National Stock Number</strong>
+  <%= @product.nsn%>
+</p>
+
+<p>
+  <strong>Cost:</strong>
+  <%= number_to_currency(@product.cost, {:unit => 'THB'}) %>
+</p>
+
+<p>
+  <strong>Stock:</strong>
+  <%= @product.stock %>
+</p>
+
+<h2>รายการแจ้งความต้องการที่เกี่ยวข้อง</h2>
+<ul>
+  <% @product.requisitions.each do |requisition| %>
+    <li><%= link_to requisition.reference_number, requisition %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'Edit this record', edit_product_path(@product) %> <br>
+<%= link_to 'Delete this record', @product,
+  :confirm => 'Are you sure?', :method => :delete %> <br>
+<%= link_to 'Back to List of Products', products_path %>

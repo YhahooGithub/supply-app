@@ -1,0 +1,31 @@
+<h1 align=center>รายการฝูงบิน</h1>
+
+<table width=100%>
+  <thead>
+    <tr>
+      <th align=left>ฝูงบิน</th>
+      <th align=left>หน.สื่อสาร</th>
+      <th>หมายเลขโทรศัพท์</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @squadrons.each do |squadron| %>
+      <tr>
+        <td><%= squadron.sq %></td>
+        <td><%= squadron.contact_name %></td>
+        <td align=center><%= squadron.contact_number %></td>
+        <td><%= link_to 'Show', squadron %></td>
+        <td><%= link_to 'Edit', edit_squadron_path(squadron) %></td>
+        <td><%= link_to 'Destroy', squadron, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Squadron', new_squadron_path %>

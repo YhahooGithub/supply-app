@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @ptype.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @ptype.description %>
+</p>
+
+<h2>Related Purchases</h2>
+<ul>
+<% @ptype.purchases.each do |purchase| %>
+  <li><%= link_to purchase.name, purchase %></li>
+<% end %>
+</ul>
+
+<%= link_to 'Edit', edit_ptype_path(@ptype) %> |
+<%= link_to 'Back', ptypes_path %>

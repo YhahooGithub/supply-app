@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Squadron:</strong>
+  <%= @sq_ac.squadron %>
+</p>
+
+<p>
+  <strong>Aircraft:</strong>
+  <%= @sq_ac.aircraft %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @sq_ac.quantity %>
+</p>
+
+<%= link_to 'Edit', edit_sq_ac_path(@sq_ac) %> |
+<%= link_to 'Back', sq_acs_path %>

@@ -1,0 +1,47 @@
+<%= form_for product do |f| %>
+  <% if product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize product.errors.count, "error" %> prohibited this product from
+        being saved:</h2>
+      <ul>
+      <% product.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  </div>
+  <div class="field">
+    <%= f.label :pn, "หมายเลขชิ้นส่วน" %><br>
+    <%= f.text_field :pn %>
+  </div>
+  <div class="field">
+    <%= f.label :modell, "รุ่น" %><br>
+    <%= f.text_field :modell %>
+  </div>
+  <div class="field">
+    <%= f.label :pro_type, "แบบ" %><br>
+    <%= f.text_field :pro_type%>
+  </div>
+  <div class="field">
+    <%= f.label :name, "ชื่อพัสดุ" %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :nsn, "หมายเลขพัสดุ" %><br>
+    <%= f.text_field :nsn %>
+  </div>
+  <div class="field">
+    <%= f.label :cost, "ราคา" %><br>
+    <%= f.text_field :cost %>
+  </p>
+  <div class="field">
+    <%= f.label :stock, "จำนวน" %><br>
+    <%= f.text_field :stock %>
+  </div>
+  <div class="actions">
+    <%= f.submit button_label %>
+  </div>
+<% end %>
+

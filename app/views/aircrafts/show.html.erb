@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @aircraft.actype %></h1>
+
+<h2>หมายเลขเครื่อง</h2>
+<table width=100%>
+  <thead>
+    <tr>
+      <th align=left>ลำดับ</th>
+      <th >หมายเลข ทอ.</th>
+      <th >หมายเลขอากาศยาน</th>
+      <th >หมายเลขฝูง</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @aircraft.aircraftnumbers.each_with_index do |aircraftnumber, index| %>
+      <tr>
+        <td ><%= index+1 %></td>
+        <td align=center><%= aircraftnumber.rtafnumber %></td>
+        <td align=center><%= aircraftnumber.acnumber %></td>
+        <td align=center><%= aircraftnumber.sqnumber %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= link_to 'Edit', edit_aircraft_path(@aircraft) %> |
+<%= link_to 'Back', aircrafts_path %>

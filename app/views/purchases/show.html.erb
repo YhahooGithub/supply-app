@@ -1,0 +1,66 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>เรื่องแจ้งความต้องการ:</strong>
+  <%= display_requisition(@purchase) %>
+</p>
+
+<h2> รายละเอียดการจัดหา</h2>
+
+<p>
+ <strong>เลขที่สัญญา/ใบสั่ง:</strong>
+ <%= @purchase.reference_number %>
+</p>
+
+<p>
+ <strong>วันเดือนปี:</strong>
+ <%= @purchase.purchase_date %>
+</p>
+
+<p>
+  <strong>เรื่อง:</strong>
+  <%= @purchase.purchase_title%>
+</p>
+
+<p>
+  <strong>รายละเอียด:</strong>
+  <%= @purchase.description%>
+</p>
+
+<p>
+  <strong>กำหนดส่งมอบ:</strong>
+  <%= @purchase.delivered_at %>
+</p>
+
+<p>
+ <strong>บริษัท:</strong>
+ <%= @purchase.display_supplier %>
+</p>
+
+<p>
+ <strong>วิธีการจัดหา:</strong>
+ <%= @purchase.display_ptype %>
+</p>
+
+
+<%= link_to 'กลับหน้าหลักรายการจัดหา', purchases_path %>  |
+
+<% unless params[:requisition_id].blank? %>
+  <%= link_to 'แก้ไขรายละเอียดการจัดหา', edit_requisition_purchase_path(@requisition) %> |
+<% else %>
+  <%= link_to 'แก้ไขรายละเอียดการจัดหา', edit_purchase_path %> |    
+<% end %>
+<%= link_to 'ลบรายการจัดหา', @purchase, method: :delete, data: { confirm: 'Are you sure?' } %> 
+
+
+<br>
+<br>
+
+<p>
+  <strong>ทอ.74:</strong>
+  <% @purchase.receipts.each do |t| %>
+  <%= link_to(t.receipt_doc, t) + ", " %>
+  <% end %>
+</p>
+
+<%= link_to 'สร้างใบรับพัสดุ', new_receipt_path %>

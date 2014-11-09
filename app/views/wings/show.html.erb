@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+<h1><%= @wing.name %></h1>
+
+<h2>รายการฝูงบิน</h2>
+
+<table width=100%>
+  <thead>
+    <tr>
+      <th align=left>ฝูงบิน</th>
+      <th align=left>หัวหน้าสื่อสารฝูงบิน</th>
+      <th>หมายเลขโทรศัพท์</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @wing.squadrons.each do |squadron| %>
+
+      <tr>
+        <td><%= squadron.sq %></td>
+        <td><%= squadron.contact_name %></td>
+        <td align=center><%= squadron.contact_number %></td>
+        <td><%= link_to 'Show', squadron %></td>
+        <td><%= link_to 'Edit', edit_squadron_path(squadron) %></td>
+        <td><%= link_to 'Destroy', squadron, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+
+    <% end %>
+  </tbody>
+</table>
+
+
+
+<%= link_to 'Edit', edit_wing_path(@wing) %> |
+<%= link_to 'Back', wings_path %>
+

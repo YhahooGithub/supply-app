@@ -1,0 +1,27 @@
+<h1 align=center>รายการกองบิน</h1>
+
+<table width=100%>
+  <thead>
+    <tr>
+      <th align=left>กองบิน</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @wings.each do |wing| %>
+      <tr>
+        <td align=left><%= wing.name %></td>
+        <td><%= link_to 'Show', wing %></td>
+        <td><%= link_to 'Edit', edit_wing_path(wing) %></td>
+        <td><%= link_to 'Destroy', wing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Wing', new_wing_path %>

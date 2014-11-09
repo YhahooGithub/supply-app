@@ -1,0 +1,27 @@
+<h1 align=center>รายการชนิดเครื่องบิน</h1>
+
+<table width=100%>
+  <thead>
+    <tr>
+      <th align=left>ชนิดเครื่องบิน</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @aircrafts.each do |aircraft| %>
+      <tr>
+        <td ><%= aircraft.actype %></td>
+        <td><%= link_to 'Show', aircraft %></td>
+        <td><%= link_to 'Edit', edit_aircraft_path(aircraft) %></td>
+        <td><%= link_to 'Destroy', aircraft, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Aircraft', new_aircraft_path %>

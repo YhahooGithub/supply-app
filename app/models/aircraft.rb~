@@ -1,0 +1,4 @@
+class Aircraft < ActiveRecord::Base
+	has_many :sq_acs
+end
+s

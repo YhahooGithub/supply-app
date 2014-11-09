@@ -1,0 +1,62 @@
+<p id="notice"><%= notice %></p>
+<h1>ฝูงบิน <%= @squadron.sq %></h1>
+
+<p>
+  <strong>หัวหน้าสื่อสารอิเล็กทรอนิกส์:</strong>
+  <%= @squadron.contact_name %>
+</p>
+<p>
+  <strong>หมายเลขโทรศัพท์:</strong>
+  <%= @squadron.contact_number %>
+</p>
+
+<h2>เครื่องบินที่ประจำการ</h2>
+<table width=100%>
+<thead>
+<tr>
+<th align=left>แบบ</th>
+<th align=left>จำนวน</th>
+</tr>
+</thead>
+<tbody>
+<% @squadron.sq_acs.each do |ac| %>
+<tr>
+<td><%= ac.aircraft.actype%></td>
+<td><%= ac.quantity %></td>
+<td> เครื่อง </td>
+<td></td>
+</tr>
+<% end %>
+</tbody>
+</table>
+
+
+<h2>หมายเลขเครื่อง</h2>
+<table width=100%>
+  <thead>
+    <tr>
+      <th align=left>ลำดับ</th>
+      <th align=left>แบบอากาศยาน</th>
+      <th >หมายเลข ทอ.</th>
+      <th >หมายเลขอากาศยาน</th>
+      <th >หมายเลขฝูง</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @squadron.aircraftnumbers.each_with_index do |aircraftnumber, index| %>
+      <tr>
+        <td ><%= index+1 %></td>
+        <td ><%= aircraftnumber.display_aircraft %></td>
+        <td align=center><%= aircraftnumber.rtafnumber %></td>
+        <td align=center><%= aircraftnumber.acnumber %></td>
+        <td align=center><%= aircraftnumber.sqnumber %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= link_to 'Edit', edit_squadron_path(@squadron) %> |
+<%= link_to 'Back', squadrons_path %>

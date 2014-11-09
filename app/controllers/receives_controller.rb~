@@ -1,0 +1,42 @@
+class ReceivesController < ApplicationController
+  def index
+    @receives = Receive.all
+  end
+  def new
+    @receive = Receive.new
+  end
+  def create
+       
+    @receive = Receive.new(params[:receive].permit(:receive_document, :receive_date, :receive_title))
+
+    if @receive.save
+      redirect_to @receive
+    else
+      render 'new'
+    end
+  
+  end
+  def show
+    @receive = Receive.find(params[:id])
+  end
+  
+  def edit
+    @receive = Receive.find(params[:id])
+  end
+  
+  def update
+  @receive = Post.find(params[:id])
+ 
+  if @receive.update(params[:receive].permit(:receive_document, :receive_date, :receive_title))
+    redirect_to @receive
+  else
+    render 'edit'
+  end
+end
+  
+  
+  private 
+    def receive_params
+      params.require(:receive).permit(:receive_document, :receive_date, :receive_title)
+    end
+end

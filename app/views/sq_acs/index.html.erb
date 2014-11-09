@@ -1,0 +1,31 @@
+<h1>Listing sq_acs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Squadron</th>
+      <th>Aircraft</th>
+      <th>Quantity</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sq_acs.each do |sq_ac| %>
+      <tr>
+        <td><%= sq_ac.squadron %></td>
+        <td><%= sq_ac.aircraft %></td>
+        <td><%= sq_ac.quantity %></td>
+        <td><%= link_to 'Show', sq_ac %></td>
+        <td><%= link_to 'Edit', edit_sq_ac_path(sq_ac) %></td>
+        <td><%= link_to 'Destroy', sq_ac, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sq ac', new_sq_ac_path %>

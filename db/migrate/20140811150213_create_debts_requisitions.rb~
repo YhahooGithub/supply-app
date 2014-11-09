@@ -1,0 +1,6 @@
+class CreateDebtsRequisitions < ActiveRecord::Migration
+  def change
+    create_table :debts_requisitions do |t|
+    end
+  end
+end

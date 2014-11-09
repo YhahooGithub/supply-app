@@ -1,0 +1,110 @@
+
+<% unless params[:requisition_id].blank? %>
+  <%= form_for purchase, url: requisition_purchase_path(requisition) do |f| %>
+
+  <% if @purchase.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@purchase.errors.count, "error") %> prohibited this purchase from being saved:</h2>
+
+      <ul>
+      <% @purchase.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <label>เอกสารแจ้งความต้องการ</label><br>
+    <%= display_requisition(@purchase) %>
+  </div> 
+  <div class="field">
+    <%= f.label :reference_number, "เลขที่สัญญา/ใบสั่ง" %><br>
+    <%= f.text_field:reference_number %>
+  </div>
+  <div class="field">
+    <%= f.label :purchase_date, "วันเดือนปีที่ออกเอกสาร" %><br>
+    <%= f.date_select:purchase_date %>
+  </div>
+  <div class="field">
+    <%= f.label :purchase_title, "เรื่อง" %><br>
+    <%= f.text_field :purchase_title %>
+  </div>
+  <div class="field">
+    <%= f.label :description, "รายละเอียด" %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :delivered_at, "กำหนดส่งมอบ" %><br>
+    <%= f.date_select :delivered_at %>
+  </div>
+  <div class="field">
+    <%= f.label :supplier_id, "บริษัทฯ" %><br>
+    <%= f.collection_select :supplier_id, Supplier.all, :id, :name, prompt: true %>
+  </div>
+  <div class="field">
+    <%= f.label :ptype_id, "วิธีการจัดหา" %><br>
+    <%= f.collection_select :ptype_id, Ptype.all, :id, :name, prompt: true %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>
+<%= link_to 'Back', requisition %>
+  
+<% else %>
+  <%= form_for(@purchase) do |f| %>     
+
+  <% if @purchase.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@purchase.errors.count, "error") %> prohibited this purchase from being saved:</h2>
+
+      <ul>
+      <% @purchase.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <label>เอกสารแจ้งความต้องการ</label><br>
+    <%= display_requisition(@purchase) %>
+  </div>
+  <div class="field">
+    <%= f.label :reference_number, "เลขที่สัญญา/ใบสั่ง" %><br>
+    <%= f.text_field:reference_number %>
+  </div>
+  <div class="field">
+    <%= f.label :purchase_date, "วันเดือนปีที่ออกเอกสาร" %><br>
+    <%= f.date_select :purchase_date %>
+  </div> 
+  <div class="field">
+    <%= f.label :purchase_title, "เรื่อง" %><br>
+    <%= f.text_field :purchase_title %>
+  </div>
+  <div class="field">
+    <%= f.label :description, "รายละเอียด" %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :delivered_at, "กำหนดส่งมอบ" %><br>
+    <%= f.date_select :delivered_at %>
+  </div>
+  <div class="field">
+    <%= f.label :supplier_id, "บริษัทฯ" %><br>
+    <%= f.collection_select :supplier_id, Supplier.all, :id, :name, prompt: true %>
+  </div>
+  <div class="field">
+    <%= f.label :ptype_id, "วิธีการจัดหา" %><br>
+    <%= f.collection_select :ptype_id, Ptype.all, :id, :name, prompt: true %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<% end %>
+
+
+

@@ -1,0 +1,35 @@
+<%= form_for([requisition, line_item]) do |f| %>
+  <% if line_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(line_item.errors.count, "error") %> prohibited this Line Item 
+        from being saved:</h2>
+      <ul>
+      <% line_item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <label>เรื่อง</label><br>
+    <%= requisition.name %>
+  </div>
+  <div class="field">
+    <%= f.label :product_id, "พัสดุ" %><br>
+    <%= f.collection_select :product_id, Product.all, :id, :name, prompt: true %>
+  </div>
+  <div class="field">
+    <%= f.label :quantity, "จำนวน" %><br>
+    <%= f.text_field :quantity %>
+  </div>
+  <div class="field">
+    <%= f.label :cost, "ราคา" %><br>
+    <%= f.text_field :cost %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'กลับ', requisition %>

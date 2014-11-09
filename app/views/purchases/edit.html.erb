@@ -1,0 +1,9 @@
+<h2>แก้ไขรายละเอียดการจัดหา</h2>
+
+<% unless params[:requisition_id].blank? %>
+  <%= render 'form', requisition: @requisition, purchase: @purchase  %>
+<% else %>
+  <%= render 'form' %>
+  <%= link_to 'แสดง', @purchase %> |
+  <%= link_to 'กลับ', purchases_path %>
+<% end %>

@@ -1,0 +1,41 @@
+<h1 align=center>รายการแจ้งความต้องการ</h1>
+
+<table width=100%>
+  <thead>
+    <tr>
+      <th align=left>ลำดับ</th>
+      <th align=left>เอกสารแจ้งความต้องการ</th>
+      <th align=left>วันที่</th>
+      <th align=left>เรื่อง</th>
+      <th align=left>สัญญา/ใบสั่ง</th>
+      
+
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @requisitions.each_with_index do |requisition, index| %>
+      <tr>
+        <td ><%= index+1 %></td>
+        <td align=left><%= link_to requisition.reference_number, requisition %></td>      
+        <td align=left><%= requisition.issue_date %></td>
+        <td><%= requisition.name %></td>
+	<td align=left>
+	  <%=unless requisition.purchase.nil?
+	      link_to requisition.purchase.reference_number, requisition_purchase_path(requisition)
+	     else
+	       ' '
+	     end %>
+    	</td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

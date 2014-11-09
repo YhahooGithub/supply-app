@@ -1,0 +1,26 @@
+
+<h1 align=center>รายการพัสดุ</h1>
+<p>Displaying Products with name "<%= params[:name] %>"</p>
+
+<table width=100%>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Part Number</th>
+      <th>National Stock Number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.pn %></td>
+        <td><%= product.nsn %></td>
+        <td><%= link_to 'Show', product_path(product.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>  
+</table>
+
+<p><%= link_to "Back to original list", products_path %></p>
+

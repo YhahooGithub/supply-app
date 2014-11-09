@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+<h2>รายละเอียดใบเบิก</h1>
+<p>
+  <strong>เอกสาร :</strong>
+  <%= @debt.doc %>
+</p>
+
+<p>
+  <strong>วันที่ :</strong>
+  <%= @debt.day %>
+</p>
+
+<p>
+  <strong>เรื่อง :</strong>
+  <%= @debt.name %>
+</p>
+
+<p>
+  <strong>ฝูงบิน :</strong>
+  <%= @debt.display_squadron %>
+</p>
+
+<p>
+  <strong>หมายเหตุ :</strong>
+  <%= @debt.remarks %>
+</p>
+
+<%= link_to 'กลับหน้าหลักรายการใบเบิก', debts_path %> |
+<%= link_to 'แก้ไขรายละเอียดใบเบิก', edit_debt_path(@debt) %> |
+<%= link_to 'ลบรายการใบเบิก', @debt, method: :delete, data: { confirm: 'Are you sure?' } %> 
+
+</br>
+
+<p>
+  <strong>เอกสารแจ้งความต้องการ:</strong>
+  <% @debt.requisitions.each do |t| %>
+  <%= link_to(t.reference_number, t) + ", " %>
+  <% end %>
+<%= link_to 'สร้างรายงานแจ้งความต้องการใหม่', new_requisition_path %>
+</p>
+
+<p>
+  <strong>ใบสั่ง/สัญญา:</strong>
+  <% @debt.purchases.each do |t| %>
+  <%= link_to(t.reference_number, t) + ", " %>
+  <% end %>
+</p>
+
+<p>
+  <strong>ทอ.74:</strong>
+  <% @debt.receipts.each do |t| %>
+  <%= link_to(t.receipt_doc, t) + ", " %>
+  <% end %>
+</p>

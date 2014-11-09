@@ -1,0 +1,12 @@
+class Debt < ActiveRecord::Base
+
+  belongs_to :squadron
+  has_and_belongs_to_many :requisitions
+
+  def display_squadron
+  return squadron.sq unless squadron.nil?
+  end
+  
+  
+  
+end

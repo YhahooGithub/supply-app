@@ -1,0 +1,30 @@
+
+<p>
+  <strong>สัญญา/ใบสั่ง: </strong>
+  <%= @receipt.display_purchase %>
+</p>
+
+
+
+
+<h2>รายละเอียดการรับพัสดุ</h2>
+
+
+<p>
+  <strong>เลขที่เอกสาร:</strong>
+  <%= @receipt.receipt_doc%>
+</p>
+ 
+<p>
+  <strong>วันเดือนปี:</strong>
+  <%= @receipt.receipt_date%>
+</p>
+<p>
+  <strong>เรื่อง:</strong>
+  <%= @receipt.receipt_title%>
+</p>
+
+
+<%= link_to 'กลับหน้าหลักรายการรับพัสดุ', receipts_path %>
+| <%= link_to 'แก้ไขรายการรับพัสดุ', edit_receipt_path(@receipt) %>
+| <%= link_to 'ลบรายการรับพัสดุ', receipt_path(@receipt), method: :delete, data: { confirm: 'Are you sure?' } %>

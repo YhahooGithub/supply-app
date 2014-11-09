@@ -1,0 +1,40 @@
+<h1 align=center>รายการจัดหา</h1>
+
+<table width=100%>
+  <thead>
+    <tr>
+      <th align=left>ลำดับ</th>
+      <th align=left>สัญญา/ใบสั่ง</th>
+      <th align=left>วันเดือนปี</th>      
+      <th align=left>เรื่อง</th>
+      <th align=center>ทอ.74</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <% if @purchases.present? %>	
+      <% @purchases.each_with_index do |purchase, index| %>
+        <tr>
+     	  <td><%= index+1 %></td>
+	  <td><%= link_to purchase.reference_number, purchase %></td>
+	  <td><%= purchase.purchase_date %></td>	  
+          <td><%= purchase.purchase_title%></td>
+          <td>
+            <% purchase.receipts.each do |t| %>
+  	    <%= link_to(t.receipt_doc, t) + ", " %>
+            <% end %>
+          </td>
+        </tr>
+	<% end %>
+	<% else %>
+      <tr>
+        <td colspan=4>คุณยังไม่มีรายการจัดหา!!</td>
+      </tr>  
+      <% end %>
+  </tbody>
+</table>
+<br>
+

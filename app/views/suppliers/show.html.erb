@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+<h1>รายละเอียดบริษัท</h1>
+<p>
+  <strong>ชื่อบริษัท:</strong>
+  <%= @supplier.name %>
+</p>
+
+<p>
+  <strong>ชื่อผ้ติดต่อ:</strong>
+  <%= @supplier.contact_name %>
+</p>
+
+<p>
+  <strong>หมายเลขโทรศัพท์:</strong>
+  <%= @supplier.contact_number %>
+</p>
+
+<h2>รายการจัดหาที่เกี่ยวข้อง</h2>
+<ul>
+<% @supplier.purchases.each do |purchase| %>
+  <li><%= link_to purchase.name, purchase %></li>
+<% end %>
+</ul>
+
+
+<%= link_to 'Edit', edit_supplier_path(@supplier) %> |
+<%= link_to 'Back', suppliers_path %>

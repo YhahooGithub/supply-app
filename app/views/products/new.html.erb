@@ -1,0 +1,5 @@
+<h1>รายละเอียดพัสดุใหม่</h1>
+
+  <%= render({:partial => "form", :locals => { :product => @product, :button_label => "Create" } }) %>
+
+<%= link_to 'Back', products_path %>

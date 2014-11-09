@@ -1,0 +1,37 @@
+<h1 align=center>รายการใบเบิก</h1>
+
+<table width=100%>
+  <thead>
+    <tr>
+      <th align=center>ลำดับ</th>
+      <th align=left>ใบเบิก</th>
+      <th>วันที่</th>
+      <th align=left>เรื่อง</th>
+      <th>เอกสารแจ้งความต้องการ</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @debts.each_with_index do |debt, index| %>
+    <tr>
+        <td ><%= index+1 %></td>
+        <td align=left><%= link_to debt.doc, debt %></td>
+        <td align=center><%= debt.day %></td>
+        <td aling=left><%= debt.name %></td>
+        <td>
+        <% debt.requisitions.each do |t| %>
+  	  <%= link_to(t.reference_number, t) + ", " %>
+        <% end %>
+        </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'สร้างรายการขอรับการสนับสนุนใหม่', new_debt_path %>
+
